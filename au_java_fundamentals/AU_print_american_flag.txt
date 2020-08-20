@@ -1,0 +1,39 @@
+public class AuClass1 {
+    public static void main(String[] args) {
+        for(int i=0;i<16;i++){
+            if(i<9){
+                for(int j=0;j<40;j++){
+                    if(j<11){
+                        if(i%2==0 && j%2==0){
+                            System.out.print("* ");
+                        }
+                        else if(i%2!=0 && j%2!=0){
+                            System.out.print("* ");
+                        }
+                        else{
+                            System.out.print("  ");
+                        }
+                    }
+                    else{
+                        if(i%2==0){
+                            System.out.print("r ");
+                        }
+                        else
+                            System.out.print("w ");
+                    }
+                }
+            }
+            else{
+                for(int j=0;j<40;j++){
+                    if(i%2==0){
+                        System.out.print("r ");
+                    }
+                    else
+                        System.out.print("w ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+

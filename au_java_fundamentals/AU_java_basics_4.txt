@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.UUID;
+
+public class School implements Serializable {
+    private static final UUID SerialVerisonUID= UUID.randomUUID();
+    public int rollno;
+    public String name;
+    public int classn;
+    public transient char section;
+    public transient int grade;
+}
+
+
+public class Serializingdata {
+    public static void main(String[] args) {
+        School s=new School();
+        s.rollno=1;
+        s.name="arpit";
+        s.classn=5;
+        s.section='a';
+        s.grade=9;
+        try{
+            FileOutputStream fileout= new FileOutputStream("/home/arpit/Desktop/school.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileout);
+            out.writeObject(s);
+            out.close();
+            fileout.close();
+            System.out.println("data saved");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+public class Deserializing {
+    public static void main(String[] args) throws IOException,ClassNotFoundException{
+        School s =null;
+        try{
+            FileInputStream file=new FileInputStream("/home/arpit/Desktop/school.txt");
+            ObjectInputStream obj=new ObjectInputStream(file);
+            s=(School) obj.readObject();
+            obj.close();
+            file.close();
+        }
+        finally {
+            System.out.println(s.name);
+            System.out.println(s.rollno);
+            System.out.println(s.classn);
+            System.out.println(s.section);
+            System.out.println(s.grade);
+        }
+
+    }
+}

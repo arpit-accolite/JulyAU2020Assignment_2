@@ -1,0 +1,54 @@
+body{
+	overflow-x: hidden;
+}
+.banner{
+    margin: 20px;
+    display: flex;
+}
+.banner img{
+	width: 30%;
+}
+.banner-content{
+	    margin-left: 15px;
+    margin-top: 10px;
+}
+.banner-content h5{
+	font-size: 22px;
+    font-weight: bold;
+}
+
+.container{
+	margin: 20px !important;
+	
+}
+.item-list{
+margin-top: 25px;
+}
+.logo{
+	height: 30px;
+    width: 30px;
+    border-radius: 31px;
+}
+.row{
+	
+	width: 100%;
+}
+.card {
+	width: 32% !important;
+margin-left: 22px;
+margin-bottom: 20px;
+box-shadow: 1px 1px 5px 1px grey;
+}
+.card img{
+	height: 200px;
+	object-fit: cover;
+}
+.card:first-child{
+	margin-left: 0 !important;
+}
+
+@media (min-width: 1000px){
+	.container{
+		max-width: 100vw !important;
+	}
+}

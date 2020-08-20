@@ -1,0 +1,78 @@
+import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class Testqueue {
+    public static void main(String[] args) {
+        Blockingqueue b= new Blockingqueue();
+        Scanner s= new Scanner(System.in);
+        int n1=s.nextInt();
+        int n2= s.nextInt();
+        ExecutorService es1= Executors.newFixedThreadPool(n1);
+        ExecutorService es2=Executors.newFixedThreadPool(n2);
+        for(int i=1;i<=n1;i++){
+            es1.execute(()->b.put());
+        }
+        for(int i=1;i<=n2;i++){
+            es2.execute(()->b.take());
+        }
+        es1.shutdown();
+        es2.shutdown();
+    }
+}
+
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Blockingqueue {
+    private int maxlength=10;
+    private int minlength=0;
+    private int number;
+    private Object lock = new Object();
+    private Queue<Integer> queue= new LinkedList<>();
+    public int getNumber(){
+        return number;
+    }
+    public void setNumber(int num){
+        number=num;
+    }
+    public void put() {
+        synchronized (lock){
+            if(queue.size()==maxlength){
+                System.out.println("Queue is full. No task is already taken by any of the consumer");
+                try {
+                    lock.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                System.out.println("Adding "+ number + " to the queue");
+                queue.add(number);
+                number++;
+                lock.notifyAll();
+            }
+        }
+    }
+
+    public void take(){
+        synchronized (lock){
+            if(queue.size()==minlength){
+                System.out.println("Queue is empty. There is no task present in the Queue");
+                try {
+                    lock.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                System.out.println("Removing "+ (--number) + " from the queue");
+                queue.remove(number);
+
+                lock.notifyAll();
+            }
+        }
+    }
+}
+

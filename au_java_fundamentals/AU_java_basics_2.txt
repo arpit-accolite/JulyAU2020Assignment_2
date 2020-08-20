@@ -1,0 +1,19 @@
+import java.util.*;
+
+
+public class Autest2 {
+    public static <K extends Comparable,V> Map<K,V> sortbykey(Map<K,V> a){
+        Map<K,V> treemap= new TreeMap<>(Collections.reverseOrder());
+        treemap.putAll(a);
+        return treemap;
+    }
+    public static void main(String[] args) {
+        Map<String,String> h= new TreeMap<>();
+        h.put("Ashish","1");
+        h.put("Chetan","2");
+        h.put("Bowmkcik","1");
+        h.put("Zeera","1");
+        h=sortbykey(h);
+        System.out.println(h);
+    }
+}

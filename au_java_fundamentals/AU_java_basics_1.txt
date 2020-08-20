@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Autest1 {
+    public static String replace(String s1, String match, String replace){
+        StringBuilder s= new StringBuilder();
+        String k[]=s1.split(" ");
+        for(int i=0;i<k.length;i++){
+            if(k[i].equals(match))
+                s.append(replace);
+            else
+                s.append(k[i]);
+            s.append(" ");
+        }
+        String m= s.toString();
+        if(m.charAt(m.length()-1)==' '){
+            return m.substring(0,m.length()-1);
+        }
+        else
+            return m;
+    }
+    public static void main(String[] args) {
+        Scanner s= new Scanner(System.in);
+        String s1=s.nextLine();
+        System.out.println("a");
+        String match=s.nextLine();
+        String replace=s.nextLine();
+        System.out.println(replace(s1,match,replace));
+    }
+}
+
