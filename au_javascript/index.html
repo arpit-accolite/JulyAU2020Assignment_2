@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Au Javascript Assignment</title>
+</head>
+<body>
+	<h5>Au Javascript Assignment</h5>
+<script type="text/javascript">
+	function processinput(name){
+		console.log(check1(name) && check2(name));
+	}
+	function getinput(callback){
+		var input = prompt('Enter the input string');
+		callback(input);
+	}
+	getinput(processinput);
+function check1(name){
+
+return (/^The/.test(name) || /^the/.test(name) )&& /hello$/.test(name);
+}
+
+function check2(name){
+	return /h[aeiou].t/.test(name);
+}
+</script>
+</body>
+</html>
