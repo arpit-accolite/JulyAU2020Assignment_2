@@ -1,0 +1,28 @@
+#submit-list{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.form-group{
+	margin:0;
+}
+#submitbtn{
+	    border-radius: 0px 20px 20px 0px;
+}
+
+.list-item{
+text-align: center;
+    background-color: #d8d6de;
+    width: 70vw;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    margin-bottom: 2px;
+    border-radius: 10px;}
+
+h5{
+text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;}
